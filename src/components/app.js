@@ -4,7 +4,7 @@ class App extends Component {
    render() {
       return (
          <div>
-            <h1>This is my first react app with an edited file.</h1>
+            <h1>{new Date().getTime()}</h1>
          </div>
       )
    }

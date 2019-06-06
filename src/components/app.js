@@ -8,7 +8,7 @@ class App extends Component {
         <div className='container center-text'>
           <h1>React Starter</h1>
           <h3>
-            Congrats! You're on React! Get started by changing the app.js file
+            Congratulations! You're on React! Get started by changing the app.js file
             to display whatever you want on this page.
           </h3>
         </div>

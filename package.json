@@ -10,7 +10,7 @@
     "build": "webpack --mode production",
     "start": "webpack --mode development && webpack-dev-server --mode development --open",
     "heroku-postbuild": "webpack -p",
-    "test": "npm run eslint"
+    "test": "./node_modules/.bin/eslint **/*.js"
   },
   "keywords": [],
   "author": "",
@@ -44,7 +44,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router": "^3.2.1",
+    "react-router-dom": "^5.0.0",
     "styled-components": "^4.1.3"
   }
 }

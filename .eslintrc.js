@@ -37,6 +37,7 @@ module.exports = {
     "no-console": [0],
     "no-else-return": [0],
     "no-multi-spaces": [0],
+    "allowIndentationTabs": true,
     "no-multiple-empty-lines": [0],
     "no-plusplus": [0],
     "no-underscore-dangle": [0],

@@ -25,10 +25,10 @@ class Header extends Component {
   render () {
     return (
       <Wrapper>
-        <div className="container py-0">
+        <div className="container py-none">
           <div className="navbar-content">
             <div className="navbar-left">
-              <h3 className="title">
+              <h3 className="m-0">
                 Brand Name
               </h3>
             </div>

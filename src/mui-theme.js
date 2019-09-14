@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core';
 
 const overrides = {
   MuiButton: {
@@ -21,17 +21,20 @@ const breakpoints = {
 };
 
 const theme = createMuiTheme({
+  spacing: 4,
   palette: {
-    primary: {
-      main: '#1dc798',
-      dark: '#1dc798',
-      contrastText: '#f7f7f7',
-    }, // Feel free to change this
     secondary: {
-      main: '#ffffff',
-      dark: '#f1f1f1',
-      contrastText: '#333',
-    }
+      main: '#F5A623',
+      light: '#ECB354',
+      dark: '#E49A1F',
+      contrastText: '#fff',
+    }, // Feel free to change this
+    primary: {
+      main: '#158EE1',
+      light: '#4CA3DE',
+      dark: '#057DCF',
+      contrastText: '#fff',
+    },
   },
   breakpoints,
   overrides,

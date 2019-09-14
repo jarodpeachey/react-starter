@@ -1,11 +1,20 @@
+/* eslint-disable no-restricted-globals */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from './mui-theme';
+import styledTheme from './styled-theme';
 import Header from './components/Header';
+import Main from './components/pages/Main';
+import { getData } from './actions/dataActions';
 
 class Application extends Component {
   static propTypes = {
-    children: PropTypes.element,
+    getData: PropTypes.func,
+    history: PropTypes.object,
   };
 
   constructor (props) {
@@ -15,38 +24,52 @@ class Application extends Component {
     };
   }
 
-  // componentDidMount () {
-
-  // }
-
-  // shouldComponentUpdate () {
-
-  // }
+  componentDidMount () {
+    this.props.getData();
+  }
 
   render () {
-    let header;
-    const { pathname } = window.location;
-
-    if (
-      pathname === '/meals' ||
-      pathname === '/workouts' ||
-      pathname === '/dashboard'
-    ) {
-      header = <Header />;
-    } else if (pathname === '/login' || pathname === '/signup') {
-      header = null;
-    } else {
-      header = <Header welcomePageActive />;
-    }
-
+    const { testData } = this.props;
     return (
-      <div>
-        {header}
-        {this.props.children}
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={styledTheme}>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <>
+                  {
+                    <Header
+                      {...props}
+                      pathname={location.pathname}
+                      data={testData}
+                    />
+                  }
+                  <Wrapper>
+                    <Main {...props} data={testData} />
+                  </Wrapper>
+                </>
+              )}
+            />
+          </Switch>
+        </ThemeProvider>
+      </MuiThemeProvider>
     );
   }
 }
 
-export default Application;
+const Wrapper = styled.div`
+  // background: ${({ theme }) => theme.colors.gray1};
+  height: 100% !important;
+  padding-top: 68px;
+`;
 
+const mapStateToProps = state => ({
+  testData: state.dataReducer.data,
+});
+
+export default connect(
+  mapStateToProps,
+  { getData },
+)(Application);

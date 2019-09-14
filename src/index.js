@@ -1,28 +1,37 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { render } from 'react-dom';
-import {
-  browserHistory, Router,
-} from 'react-router';
-// import { useScroll } from 'react-router-scroll';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { ThemeProvider } from 'styled-components';
-import muiTheme from './mui-theme';
-import styledTheme from './styled-theme';
-import routes from './Routes';
+import ReactDOM from 'react-dom';
+import { Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import Application from './Application';
+import { persistor, store } from './Store';
 
-function startApp () {
-  render(
-    <MuiThemeProvider theme={muiTheme}>
-      <ThemeProvider theme={styledTheme}>
-        <Router
-          history={browserHistory}
-        >
-          {routes()}
-        </Router>
-      </ThemeProvider>
-    </MuiThemeProvider>, document.getElementById('app'),
+const history = createBrowserHistory({
+  // forceRefresh: true,
+});
+
+const renderApp = () => {
+  ReactDOM.render(
+    <>
+      <Provider store={store}>
+        <PersistGate loading={<h1>Loading...</h1>} persistor={persistor}>
+          <Router history={history}>
+            <Route
+              render={props => (
+                <Application
+                  {...props}
+                />
+              )}
+            />
+          </Router>
+          {/* <Application /> */}
+        </PersistGate>
+      </Provider>
+    </>,
+    document.getElementById('app'),
   );
-}
+};
 
-startApp();
+renderApp();

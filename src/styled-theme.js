@@ -1,4 +1,4 @@
-const theme = {
+const styledTheme = {
   breakpoints: {
     sm: '540px',
     md: '769px',
@@ -6,17 +6,27 @@ const theme = {
     xl: '1220px',
   },
   colors: {
-    accent: 'orange',
-    main: '#1dc798'
+    primary: '#158EE1',
+    // meals: '#FF9900',
+    // workouts: '#ED002F',
+    secondary: '#ff8f00',
+    gray1: '#f7f7f7',
+    gray2: '#eeeeee',
+    gray3: '#d3d3d3',
+    gray4: '#ddd',
+    gray5: '#8d8d8d',
+    gray6: '#4b4b4b',
+    gray7: '#2b2a2a',
   },
   spacing: {
-    xs: '4px',
-    sm: '8px',
-    md: '16px',
-    lg: '32px',
-    xl: '64px',
+    xxs: '4px',
+    xs: '8px',
+    sm: '16px',
+    md: '32px',
+    lg: '64px',
+    xl: '96px',
     xxl: '128px',
-  }
+  },
 };
 
-export default theme;
+export default styledTheme;
